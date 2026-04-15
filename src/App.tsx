@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import Header from "./components/header";
 import Menu from "./components/menu";
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { HashRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Home from "./pages/home";
 import Library from "./pages/library";
 import History from "./pages/history";
@@ -70,9 +70,9 @@ function AppContent() {
 function App() {
   return (
     <UserStorage>
-      <BrowserRouter>
+      <HashRouter>
         <AppContent />
-      </BrowserRouter>
+      </HashRouter>
     </UserStorage>
   );
   
