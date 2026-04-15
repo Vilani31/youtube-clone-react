@@ -1,5 +1,5 @@
 {
-  "homepage": "https://vilani31.github.io/youtube-clone-react/",
+  "homepage": "https://Vilani31.github.io/youtube-clone-react",
   "name": "youtube",
   "private": true,
   "version": "0.0.0",
@@ -9,7 +9,7 @@
   "build": "vite build",
   "preview": "vite preview",
 
-  "predeploy": "npm run build",
+  "predeploy": "npm run build && cp dist/index.html dist/404.html",
   "deploy": "gh-pages -d dist"
 },
   "dependencies": {
