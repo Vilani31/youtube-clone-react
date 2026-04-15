@@ -8,24 +8,22 @@ export const UserStorage = ({ children }: any) => {
     const [user, setUser] = useState<any>(null);
     const [token, setToken] = useState(localStorage.getItem('token') as string);
 
-const getUser = (token: string) => {
-    api.get('/user/get-user', {
+const getUser = async (token: string) => {
+    try {
+        const { data } = await api.get('/user/get-user', {
         headers: { Authorization: token }
-    })
-    .then(({ data }) => {
+        });
 
-        console.log("RESPOSTA DO BACK:", data); // 🔥 AQUI
+        console.log("RESPOSTA DO BACK:", data);
 
         setUser(data.user);
         setLogin(true);
-    })
-    .catch((error) => {
 
-        console.log("ERRO AO BUSCAR USER:", error); // 🔥 EXTRA
-
+    } catch (error) {
+        console.log("ERRO AO BUSCAR USER:", error);
         setLogin(false);
-    });
-}
+    }
+    };
 
     useEffect(() => {
     if (token) {
@@ -36,27 +34,24 @@ const getUser = (token: string) => {
 const logOut = () => {
     localStorage.removeItem('token');
     setLogin(false);
-    setUser({});
-    window.location.href = '/login';
-    
+    setUser(null);
 }
 
     const handleLogin = async (email: string, password: string) => {
-    try {
-        const { data } = await api.post('/user/sign-in', { email, password });
+        try {
+            const { data } = await api.post('/user/sign-in', { email, password });
 
-        localStorage.setItem('token', data.token);
+            localStorage.setItem('token', data.token);
 
-        setToken(data.token);
-        setLogin(true);
+            setToken(data.token);
 
-        getUser(data.token);
+            await getUser(data.token); 
 
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
+            return true;
+        } catch (error) {
+            return false;
+        }
+        };
 
     return (
         <UserContext.Provider value={{

@@ -28,27 +28,25 @@ function Register(){
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleRegister = async () => {
+   const handleRegister = async () => {
         try {
             setError('');
+
             await api.post('/user/sign-up', {
-                name,
-                email,
-                password
+            name,
+            email,
+            password
             });
 
-            
-            const success = await handleLogin(email, password);
+            await handleLogin(email, password);
 
-            if (success) {
-                navigate('/');
-            }
+            navigate('/');
 
         } catch (err: any) {
-          const message = err?.response?.data?.error || 'Erro ao criar conta';
+            const message = err?.response?.data?.error || 'Erro ao criar conta';
             setError(message);
-}
-    }
+        }
+        };
 
     return (
     <Container>

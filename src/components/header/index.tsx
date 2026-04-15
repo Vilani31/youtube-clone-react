@@ -91,7 +91,7 @@ function Header({openMenu, setOpenMenu}: IProps){
                 <ButtonIcon alt="" src={VideoIcon} />
             </ButtonContainer>
             <ButtonContainer margin='0 0 0 10px'>
-                <ButtonIcon alt="" src={NotificationHome} />
+                <ButtonIcon onClick={() => navigate('/')} alt="" src={NotificationHome} />
             </ButtonContainer>
 
             {login && user.nome ? (

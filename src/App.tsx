@@ -24,7 +24,7 @@ function AppContent() {
   if (login && location.pathname === '/login') {
     navigate('/');
   }
-}, [login]);
+}, [login, location.pathname]);
 
   const isAuthPage =
     location.pathname === '/login' ||
