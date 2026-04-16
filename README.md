@@ -25,7 +25,6 @@ Projeto desenvolvido com React simulando a interface do YouTube, consumindo a AP
 
 - GitHub: https://github.com/Vilani31
 - LinkedIn: https://www.linkedin.com/in/gustavovilani31/
-- Teste: https://vilani31.github.io/youtube-clone-react/
 
 📌  Este projeto foi desenvolvido com o objetivo de praticar integração com APIs externas, manipulação de estado no React e construção de interfaces modernas inspiradas em aplicações reais como o YouTube.
 
